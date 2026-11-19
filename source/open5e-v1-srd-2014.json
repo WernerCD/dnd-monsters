@@ -1,0 +1,1934 @@
+[
+ {
+  "name": "Aboleth",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": "The aboleth can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The aboleth regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Acolyte",
+  "subtype": "any race",
+  "group": "NPCs",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Adult Black Dragon",
+  "subtype": "",
+  "group": "Black Dragon",
+  "legendary_desc": "The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Adult Blue Dragon",
+  "subtype": "",
+  "group": "Blue Dragon",
+  "legendary_desc": "The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Adult Brass Dragon",
+  "subtype": "",
+  "group": "Brass Dragon",
+  "legendary_desc": "The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Adult Bronze Dragon",
+  "subtype": "",
+  "group": "Bronze Dragon",
+  "legendary_desc": "The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Adult Copper Dragon",
+  "subtype": "",
+  "group": "Copper Dragon",
+  "legendary_desc": "The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Adult Gold Dragon",
+  "subtype": "",
+  "group": "Gold Dragon",
+  "legendary_desc": "The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Adult Green Dragon",
+  "subtype": "",
+  "group": "Green Dragon",
+  "legendary_desc": "The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Adult Red Dragon",
+  "subtype": "",
+  "group": "Red Dragon",
+  "legendary_desc": "The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Adult Silver Dragon",
+  "subtype": "",
+  "group": "Silver Dragon",
+  "legendary_desc": "The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Adult White Dragon",
+  "subtype": "",
+  "group": "White Dragon",
+  "legendary_desc": "The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Air Elemental",
+  "subtype": "",
+  "group": "Elementals",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Ancient Black Dragon",
+  "subtype": "",
+  "group": "Black Dragon",
+  "legendary_desc": "The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Ancient Blue Dragon",
+  "subtype": "",
+  "group": "Blue Dragon",
+  "legendary_desc": "The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Ancient Brass Dragon",
+  "subtype": "",
+  "group": "Brass Dragon",
+  "legendary_desc": "The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Ancient Bronze Dragon",
+  "subtype": "",
+  "group": "Bronze Dragon",
+  "legendary_desc": "The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Ancient Copper Dragon",
+  "subtype": "",
+  "group": "Copper Dragon",
+  "legendary_desc": "The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Ancient Gold Dragon",
+  "subtype": "",
+  "group": "Gold Dragon",
+  "legendary_desc": "The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Ancient Green Dragon",
+  "subtype": "",
+  "group": "Green Dragon",
+  "legendary_desc": "The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Ancient Red Dragon",
+  "subtype": "",
+  "group": "Red Dragon",
+  "legendary_desc": "The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Ancient Silver Dragon",
+  "subtype": "",
+  "group": "Silver Dragon",
+  "legendary_desc": "The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Ancient White Dragon",
+  "subtype": "",
+  "group": "White Dragon",
+  "legendary_desc": "The dragon can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The dragon regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Androsphinx",
+  "subtype": "",
+  "group": "Sphinxes",
+  "legendary_desc": "The sphinx can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The sphinx regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Animated Armor",
+  "subtype": "",
+  "group": "Animated Objects",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Ankheg",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Ape",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Archmage",
+  "subtype": "any race",
+  "group": "NPCs",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Assassin",
+  "subtype": "any race",
+  "group": "NPCs",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Awakened Shrub",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Awakened Tree",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Axe Beak",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Azer",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Baboon",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Badger",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Balor",
+  "subtype": "demon",
+  "group": "Demons",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Bandit",
+  "subtype": "any race",
+  "group": "NPCs",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Bandit Captain",
+  "subtype": "any race",
+  "group": "NPCs",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Barbed Devil",
+  "subtype": "devil",
+  "group": "Devils",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Basilisk",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Bat",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Bearded Devil",
+  "subtype": "devil",
+  "group": "Devils",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Behir",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Berserker",
+  "subtype": "any race",
+  "group": "NPCs",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Black Bear",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Black Dragon Wyrmling",
+  "subtype": "",
+  "group": "Black Dragon",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Black Pudding",
+  "subtype": "",
+  "group": "Oozes",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Blink Dog",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Blood Hawk",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Blue Dragon Wyrmling",
+  "subtype": "",
+  "group": "Blue Dragon",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Boar",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Bone Devil",
+  "subtype": "devil",
+  "group": "Devils",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Brass Dragon Wyrmling",
+  "subtype": "",
+  "group": "Brass Dragon",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Bronze Dragon Wyrmling",
+  "subtype": "",
+  "group": "Bronze Dragon",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Brown Bear",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Bugbear",
+  "subtype": "goblinoid",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Bulette",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Camel",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Cat",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Centaur",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Chain Devil",
+  "subtype": "devil",
+  "group": "Devils",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Chimera",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Chuul",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Clay Golem",
+  "subtype": "",
+  "group": "Golems",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Cloaker",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Cloud Giant",
+  "subtype": "",
+  "group": "Giants",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Cockatrice",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Commoner",
+  "subtype": "any race",
+  "group": "NPCs",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Constrictor Snake",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Copper Dragon Wyrmling",
+  "subtype": "",
+  "group": "Copper Dragon",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Couatl",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Crab",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Crocodile",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Cult Fanatic",
+  "subtype": "any race",
+  "group": "NPCs",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Cultist",
+  "subtype": "any race",
+  "group": "NPCs",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Darkmantle",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Death Dog",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Deep Gnome (Svirfneblin)",
+  "subtype": "gnome",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Deer",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Deva",
+  "subtype": "",
+  "group": "Angels",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Dire Wolf",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Djinni",
+  "subtype": "",
+  "group": "Genies",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Doppelganger",
+  "subtype": "shapechanger",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Draft Horse",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Dragon Turtle",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Dretch",
+  "subtype": "demon",
+  "group": "Demons",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Drider",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Drow",
+  "subtype": "elf",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Druid",
+  "subtype": "any race",
+  "group": "NPCs",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Dryad",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Duergar",
+  "subtype": "dwarf",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Dust Mephit",
+  "subtype": "",
+  "group": "Mephits",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Eagle",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Earth Elemental",
+  "subtype": "",
+  "group": "Elementals",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Efreeti",
+  "subtype": "",
+  "group": "Genies",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Elephant",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Elk",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Erinyes",
+  "subtype": "devil",
+  "group": "Devils",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Ettercap",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Ettin",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Fire Elemental",
+  "subtype": "",
+  "group": "Elementals",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Fire Giant",
+  "subtype": "",
+  "group": "Giants",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Flesh Golem",
+  "subtype": "",
+  "group": "Golems",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Flying Snake",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Flying Sword",
+  "subtype": "",
+  "group": "Animated Objects",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Frog",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Frost Giant",
+  "subtype": "",
+  "group": "Giants",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Gargoyle",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Gelatinous Cube",
+  "subtype": "",
+  "group": "Oozes",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Ghast",
+  "subtype": "",
+  "group": "Ghouls",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Ghost",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Ghoul",
+  "subtype": "",
+  "group": "Ghouls",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Ape",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Badger",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Bat",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Boar",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Centipede",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Constrictor Snake",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Crab",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Crocodile",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Eagle",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Elk",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Fire Beetle",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Frog",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Goat",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Hyena",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Lizard",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Octopus",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Owl",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Poisonous Snake",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Rat",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Rat (Diseased)",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Scorpion",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Sea Horse",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Shark",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Spider",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Toad",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Vulture",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Wasp",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Weasel",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Giant Wolf Spider",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Gibbering Mouther",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Glabrezu",
+  "subtype": "demon",
+  "group": "Demons",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Gladiator",
+  "subtype": "any race",
+  "group": "NPCs",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Gnoll",
+  "subtype": "gnoll",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Goat",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Goblin",
+  "subtype": "goblinoid",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Gold Dragon Wyrmling",
+  "subtype": "",
+  "group": "Gold Dragon",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Gorgon",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Gray Ooze",
+  "subtype": "",
+  "group": "Oozes",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Green Dragon Wyrmling",
+  "subtype": "",
+  "group": "Green Dragon",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Green Hag",
+  "subtype": "",
+  "group": "Hags",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Grick",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Griffon",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Grimlock",
+  "subtype": "grimlock",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Guard",
+  "subtype": "any race",
+  "group": "NPCs",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Guardian Naga",
+  "subtype": "",
+  "group": "Nagas",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Gynosphinx",
+  "subtype": "",
+  "group": "Sphinxes",
+  "legendary_desc": "The sphinx can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The sphinx regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Half-Red Dragon Veteran",
+  "subtype": "human",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Harpy",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Hawk",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Hell Hound",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Hezrou",
+  "subtype": "demon",
+  "group": "Demons",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Hill Giant",
+  "subtype": "",
+  "group": "Giants",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Hippogriff",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Hobgoblin",
+  "subtype": "goblinoid",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Homunculus",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Horned Devil",
+  "subtype": "devil",
+  "group": "Devils",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Hunter Shark",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Hydra",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Hyena",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Ice Devil",
+  "subtype": "devil",
+  "group": "Devils",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Ice Mephit",
+  "subtype": "",
+  "group": "Mephits",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Imp",
+  "subtype": "devil",
+  "group": "Devils",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Invisible Stalker",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Iron Golem",
+  "subtype": "",
+  "group": "Golems",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Jackal",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Killer Whale",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Knight",
+  "subtype": "any race",
+  "group": "NPCs",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Kobold",
+  "subtype": "kobold",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Kraken",
+  "subtype": "titan",
+  "group": "",
+  "legendary_desc": "The kraken can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The kraken regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Lamia",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Lemure",
+  "subtype": "devil",
+  "group": "Devils",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Lich",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": "The lich can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The lich regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Lion",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Lizard",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Lizardfolk",
+  "subtype": "lizardfolk",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Mage",
+  "subtype": "any race",
+  "group": "NPCs",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Magma Mephit",
+  "subtype": "",
+  "group": "Mephits",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Magmin",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Mammoth",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Manticore",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Marilith",
+  "subtype": "demon",
+  "group": "Demons",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Mastiff",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Medusa",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Merfolk",
+  "subtype": "merfolk",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Merrow",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Mimic",
+  "subtype": "shapechanger",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Minotaur",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Minotaur Skeleton",
+  "subtype": "",
+  "group": "Skeletons",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Mule",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Mummy",
+  "subtype": "",
+  "group": "Mummies",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Mummy Lord",
+  "subtype": "",
+  "group": "Mummies",
+  "legendary_desc": "The mummy lord can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The mummy lord regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Nalfeshnee",
+  "subtype": "demon",
+  "group": "Demons",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Night Hag",
+  "subtype": "",
+  "group": "Hags",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Nightmare",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Noble",
+  "subtype": "any race",
+  "group": "NPCs",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Ochre Jelly",
+  "subtype": "",
+  "group": "Oozes",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Octopus",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Ogre",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Ogre Zombie",
+  "subtype": "",
+  "group": "Zombies",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Oni",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Orc",
+  "subtype": "orc",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Otyugh",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Owl",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Owlbear",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Panther",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Pegasus",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Phase Spider",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Pit Fiend",
+  "subtype": "devil",
+  "group": "Devils",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Planetar",
+  "subtype": "",
+  "group": "Angels",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Plesiosaurus",
+  "subtype": "",
+  "group": "Dinosaurs",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Poisonous Snake",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Polar Bear",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Pony",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Priest",
+  "subtype": "any race",
+  "group": "NPCs",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Pseudodragon",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Purple Worm",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Quasit",
+  "subtype": "demon",
+  "group": "Demons",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Quipper",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Rakshasa",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Rat",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Raven",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Red Dragon Wyrmling",
+  "subtype": "",
+  "group": "Red Dragon",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Reef Shark",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Remorhaz",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Rhinoceros",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Riding Horse",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Roc",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Roper",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Rug of Smothering",
+  "subtype": "",
+  "group": "Animated Objects",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Rust Monster",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Saber-Toothed Tiger",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Sahuagin",
+  "subtype": "sahuagin",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Salamander",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Satyr",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Scorpion",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Scout",
+  "subtype": "any race",
+  "group": "NPCs",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Sea Hag",
+  "subtype": "",
+  "group": "Hags",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Sea Horse",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Shadow",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Shambling Mound",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Shield Guardian",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Shrieker",
+  "subtype": "",
+  "group": "Fungi",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Silver Dragon Wyrmling",
+  "subtype": "",
+  "group": "Silver Dragon",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Skeleton",
+  "subtype": "",
+  "group": "Skeletons",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Solar",
+  "subtype": "",
+  "group": "Angels",
+  "legendary_desc": "The solar can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The solar regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Specter",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Spider",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Spirit Naga",
+  "subtype": "",
+  "group": "Nagas",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Sprite",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Spy",
+  "subtype": "any race",
+  "group": "NPCs",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Steam Mephit",
+  "subtype": "",
+  "group": "Mephits",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Stirge",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Stone Giant",
+  "subtype": "",
+  "group": "Giants",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Stone Golem",
+  "subtype": "",
+  "group": "Golems",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Storm Giant",
+  "subtype": "",
+  "group": "Giants",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Succubus/Incubus",
+  "subtype": "shapechanger",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Swarm of Bats",
+  "subtype": "Swarm",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Swarm of Beetles",
+  "subtype": "Swarm",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Swarm of Centipedes",
+  "subtype": "Swarm",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Swarm of Insects",
+  "subtype": "Swarm",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Swarm of Poisonous Snakes",
+  "subtype": "Swarm",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Swarm of Quippers",
+  "subtype": "Swarm",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Swarm of Rats",
+  "subtype": "Swarm",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Swarm of Ravens",
+  "subtype": "Swarm",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Swarm of Spiders",
+  "subtype": "Swarm",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Swarm of Wasps",
+  "subtype": "Swarm",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Tarrasque",
+  "subtype": "titan",
+  "group": "",
+  "legendary_desc": "The tarrasque can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The tarrasque regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Thug",
+  "subtype": "any race",
+  "group": "NPCs",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Tiger",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Treant",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Tribal Warrior",
+  "subtype": "any race",
+  "group": "NPCs",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Triceratops",
+  "subtype": "",
+  "group": "Dinosaurs",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Troll",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Tyrannosaurus Rex",
+  "subtype": "",
+  "group": "Dinosaurs",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Unicorn",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": "The unicorn can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The unicorn regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Vampire",
+  "subtype": "shapechanger",
+  "group": "Vampires",
+  "legendary_desc": "The vampire can take 3 legendary actions, choosing from the options below. Only one legendary action option can be used at a time and only at the end of another creature's turn. The vampire regains spent legendary actions at the start of its turn."
+ },
+ {
+  "name": "Vampire Spawn",
+  "subtype": "",
+  "group": "Vampires",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Veteran",
+  "subtype": "any race",
+  "group": "NPCs",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Violet Fungus",
+  "subtype": "",
+  "group": "Fungi",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Vrock",
+  "subtype": "demon",
+  "group": "Demons",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Vulture",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Warhorse",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Warhorse Skeleton",
+  "subtype": "",
+  "group": "Skeletons",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Water Elemental",
+  "subtype": "",
+  "group": "Elementals",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Weasel",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Werebear",
+  "subtype": "human",
+  "group": "Lycanthropes",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Wereboar",
+  "subtype": "human",
+  "group": "Lycanthropes",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Wererat",
+  "subtype": "human",
+  "group": "Lycanthropes",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Weretiger",
+  "subtype": "human",
+  "group": "Lycanthropes",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Werewolf",
+  "subtype": "human",
+  "group": "Lycanthropes",
+  "legendary_desc": ""
+ },
+ {
+  "name": "White Dragon Wyrmling",
+  "subtype": "",
+  "group": "White Dragon",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Wight",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Will-o'-Wisp",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Winter Wolf",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Wolf",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Worg",
+  "subtype": "",
+  "group": "Miscellaneous Creatures",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Wraith",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Wyvern",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Xorn",
+  "subtype": "",
+  "group": "",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Young Black Dragon",
+  "subtype": "",
+  "group": "Black Dragon",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Young Blue Dragon",
+  "subtype": "",
+  "group": "Blue Dragon",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Young Brass Dragon",
+  "subtype": "",
+  "group": "Brass Dragon",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Young Bronze Dragon",
+  "subtype": "",
+  "group": "Bronze Dragon",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Young Copper Dragon",
+  "subtype": "",
+  "group": "Copper Dragon",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Young Gold Dragon",
+  "subtype": "",
+  "group": "Gold Dragon",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Young Green Dragon",
+  "subtype": "",
+  "group": "Green Dragon",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Young Red Dragon",
+  "subtype": "",
+  "group": "Red Dragon",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Young Silver Dragon",
+  "subtype": "",
+  "group": "Silver Dragon",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Young White Dragon",
+  "subtype": "",
+  "group": "White Dragon",
+  "legendary_desc": ""
+ },
+ {
+  "name": "Zombie",
+  "subtype": "",
+  "group": "Zombies",
+  "legendary_desc": ""
+ }
+]
