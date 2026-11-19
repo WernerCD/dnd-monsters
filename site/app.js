@@ -202,7 +202,9 @@
   /* ---------- stat block (shared statblock.js, STYLE 6i) ---------- */
   function srdCredit(ed) { return 'From the System Reference Document ' + (ed === '2014' ? '5.1' : '5.2') + ' by Wizards of the Coast LLC, CC BY 4.0.'; }
   function sbBody(m, ed) {
-    return '<p class="dsb-type sb-type">' + esc(DndStatblock.typeLine(m)) + '</p>' + DndStatblock.html(m, { ed: ed, source: srdCredit(ed) });
+    var tl = esc(DndStatblock.typeLine(m)), ty = esc(m.type);
+    if (m.type) tl = tl.replace(ty, '<button type="button" class="sb-tfilter" data-tfilter="' + ty + '" title="Show every ' + ty + ' in the list">' + ty + '</button>');
+    return '<p class="dsb-type sb-type">' + tl + '</p>' + DndStatblock.html(m, { ed: ed, source: srdCredit(ed) });
   }
   var dlgEd = null, closeDetail = null;
   function openDetail(id, ed) {
@@ -278,6 +280,8 @@
     if (t.dataset.open) return openDetail(t.dataset.open);
     if (t.dataset.edTab) return openDetail(state.open, t.dataset.edTab);
     if (t.dataset.clear) { var p = {}; p[t.dataset.clear] = []; return update(p); }
+    if (t.dataset.tfilter) { closeDetail(); update({ type: [t.dataset.tfilter] }); var l = $('#count'); if (l) l.scrollIntoView({ block: 'start' }); return; }
+    if (t.id === 'diceBtn') { if (window.DndDice) DndDice.open(); return; }
     if (t.id === 'closeDlg') return closeDetail();
     if (t.id === 'copyMon') return copyText(location.href, t, 'Copy link to this creature');
     if (t.id === 'copyLink') return copyText(location.href, t, 'Copy link');

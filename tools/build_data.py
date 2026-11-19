@@ -115,6 +115,29 @@ def noun_for(c):
     return hits.most_common(1)[0][0] if hits else (words[-1] if words else "creature")
 
 
+# a spell list line: optional bullet, a label such as "At will", "3/day each", "Cantrips (at will)", "1st level (4 slots)"
+SPELL_LINE = re.compile(r"^(\s*(?:[-*]\s+)?(?:\*\*)?[^:\n]{0,40}?(?:at will|/day|cantrips?|level)[^:\n]*:(?:\*\*)?\s+)(.+)$", re.I)
+SPELL_ITEM = re.compile(r"^([A-Za-z][A-Za-z' /-]*?[A-Za-z])(\*?(?:\s*\([^)]*\))?\*?)$")
+
+
+def spell_italics(name, desc):
+    """Spell names in a Spellcasting entry's lists in italics, as the SRD prints them (so links.js links them).
+    Lines look like '* 1st level (4 slots): detect magic, shield' (2014) or '- **At Will:** Fireball, Mage Hand' (2024)."""
+    if "spellcasting" not in (name or "").lower() or not desc:
+        return desc
+    def line(ln):
+        m = SPELL_LINE.match(ln)
+        if not m:
+            return ln
+        out = []
+        for it in m.group(2).split(", "):
+            k = SPELL_ITEM.match(it.strip())
+            # a trailing "*" (cast before combat) would stop the Markdown italics closing; U+2217 looks the same
+            out.append(f"_{k.group(1)}_{k.group(2).replace('*', chr(0x2217))}" if k else it)
+        return m.group(1) + ", ".join(out)
+    return "\n".join(line(ln) for ln in desc.split("\n"))
+
+
 def build(c, ed, extra):
     ri = c.get("resistances_and_immunities") or {}
     sp = c.get("speed") or {}
@@ -130,10 +153,10 @@ def build(c, ed, extra):
     acts = sorted(c.get("actions") or [], key=lambda a: (a["name"] != "Multiattack", a.get("order_in_statblock") or 0))
 
     def of(kind):
-        return [{"name": act_name(a, kind == "LEGENDARY_ACTION"), "desc": norm_text(a["desc"])}
+        return [{"name": act_name(a, kind == "LEGENDARY_ACTION"), "desc": spell_italics(a["name"], norm_text(a["desc"]))}
                 for a in acts if (a.get("action_type") or "ACTION") == kind]
 
-    traits = [{"name": norm_text(t["name"]), "desc": norm_text(t["desc"])} for t in (c.get("traits") or [])]
+    traits = [{"name": norm_text(t["name"]), "desc": spell_italics(t["name"], norm_text(t["desc"]))} for t in (c.get("traits") or [])]
     legendary = of("LEGENDARY_ACTION")
     all_text = json.dumps(traits + legendary + of("ACTION"))
     lair = bool(extra.get("xp_in_lair")) or bool(re.search(r"\bin (?:its |a )?lair\b", all_text, re.I))

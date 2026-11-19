@@ -13,6 +13,7 @@ Every creature in the free System Reference Documents, with full stat blocks, fo
 - The link keeps every filter, and an open stat block has its own link (`?m=<id>`).
 - A creatures-by-CR bar chart for the current filter (shared `DndPlot`).
 - Encounter builder (`#encounter`): add creatures from the list or a stat block, with counts; the party comes from the hub's Party page (`dnd.party`) or is set by hand. Shows total XP, 2014 adjusted XP, the budget or threshold bars and a difficulty line, using the 2024 DMG XP budgets per character or the 2014 DMG thresholds and encounter multipliers. Saved in `dnd.encounter`, shareable (`#encounter&c=<id>:<n>,...&p=<n>x<level>`), printable with every stat block.
+- Dice and links (shared `dice.js`/`links.js`): stat block numbers roll; spell lists are put in italics by the data build so they link to the Spell Planner; conditions link to the Rules Reference; the encounter builder rolls initiative.
 - Works offline after one visit (shared `sw.js`/`offline.js`, `site/offline.json`), with app icons and a link preview.
 - `site/search.json` (built by `tools/build_data.py`) feeds the hub's "Search every tool" box; each entry opens its stat block.
 

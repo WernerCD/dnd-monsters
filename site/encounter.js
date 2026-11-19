@@ -48,7 +48,7 @@
     return { v: 1, list: list, party: { mode: p.mode === 'manual' ? 'manual' : 'party', groups: groups }, lair: !!e.lair };
   }
   var enc = clean(store.get(KEY, null)), undo = null, incoming = null;
-  function save() { store.set(KEY, enc); }
+  function save() { store.set(KEY, enc); var io = document.getElementById('encInitOut'); if (io) io.innerHTML = ''; }
 
   /* ---------- the hub's party ---------- */
   function hubParty() {
@@ -188,7 +188,7 @@
     $('#encResult').innerHTML = r;
     $('#encLairWrap').hidden = !c.anyLair;
     $('#encLair').checked = enc.lair;
-    ['encCopy', 'encPrint', 'encClear'].forEach(function (id) { $('#' + id).disabled = !c.count; });
+    ['encCopy', 'encPrint', 'encClear', 'encInit'].forEach(function (id) { $('#' + id).disabled = !c.count; });
   }
 
   /* ---------- actions ---------- */
@@ -209,6 +209,17 @@
   function setN(id, n) {
     enc.list.forEach(function (x) { if (x.id === id) x.n = Math.max(1, Math.min(99, n)); });
     save(); render();
+  }
+  function initMod(m) { return m.init != null ? m.init : (m.ab ? Math.floor((m.ab[1] - 10) / 2) : 0); }
+  function rollInit() {   // one roll per creature group, highest first (DndDice shows each roll and logs it)
+    if (!window.DndDice) return;
+    var out = rows().map(function (r) {
+      var k = initMod(r.m), expr = '1d20' + (k ? (k > 0 ? '+' : '') + k : ''), res = DndDice.roll(expr, r.m.name + (r.n > 1 ? ' ×' + r.n : '') + ' initiative');
+      return { name: r.m.name, n: r.n, total: res ? res.total : null, expr: expr };
+    }).sort(function (a, b) { return b.total - a.total; });
+    $('#encInitOut').innerHTML = out.length ? '<h3>Initiative</h3><ol class="enc-init" id="encInitList">' + out.map(function (x) {
+      return '<li><b>' + x.total + '</b> ' + esc(x.name) + (x.n > 1 ? ' ×' + x.n : '') + ' <span class="small muted">(' + esc(x.expr) + ')</span></li>';
+    }).join('') + '</ol><p class="small muted">One roll per kind of creature, highest first. Add the characters\' rolls at the table.</p>' : '';
   }
   function printIt() {
     var c = compute(), out = '<h2>Encounter: ' + esc(c.label ? c.label + ' for ' + partyText(c.party.levels) : num(c.total) + ' XP') + '</h2>' +
@@ -233,6 +244,7 @@
     var a = t.dataset.enc; if (!a) {
       if (t.id === 'encCopy') return copy(t);
       if (t.id === 'encPrint') return printIt();
+      if (t.id === 'encInit') return rollInit();
       if (t.id === 'encClear') { undo = JSON.parse(JSON.stringify(enc.list)); enc.list = []; save(); return render(); }
       return;
     }
