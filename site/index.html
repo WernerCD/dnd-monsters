@@ -13,8 +13,13 @@
 <meta property="og:title" content="Monster Lookup">
 <meta property="og:description" content="Every creature in the D&D 5e System Reference Documents, 2014 (SRD 5.1) and 2024 (SRD 5.2), with full stat blocks and filters for CR, type, size, defences and movement.">
 <meta property="og:url" content="https://wernercd.github.io/dnd-monsters/">
-<meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M6 3c4 7 5 16 2 26h3c3-10 2-19-5-26zM14 2c4 8 5 17 2 28h3c3-11 2-20-5-28zM22 3c4 7 5 16 2 26h3c3-10 2-19-5-26z' fill='%23c9a227'/%3E%3C/svg%3E">
+<meta property="og:image" content="https://wernercd.github.io/dnd-monsters/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -99,6 +104,33 @@
     </div>
   </details>
 
+  <details class="rules-card enc" id="encounter">
+    <summary><h2>Encounter builder</h2> <span class="small muted" id="encSum"></span></summary>
+    <div class="encbody">
+      <div id="encNote"></div>
+      <div class="enc-grid">
+        <div class="enc-col">
+          <h3>Creatures</h3>
+          <ul class="enc-list" id="encList"></ul>
+          <p class="small muted" id="encEmpty">No creatures yet. Use the + on a card, or "Add to encounter" in a stat block.</p>
+          <label class="tog" id="encLairWrap" hidden><input type="checkbox" id="encLair"> In their lair (2024 lair XP)</label>
+        </div>
+        <div class="enc-col">
+          <h3>Party</h3>
+          <div id="encParty"></div>
+        </div>
+      </div>
+      <div id="encResult" aria-live="polite"></div>
+      <div class="enc-actions">
+        <button type="button" class="chip" id="encCopy">Copy encounter link</button>
+        <button type="button" class="chip" id="encPrint">Print with stat blocks</button>
+        <button type="button" class="chip" id="encClear">Clear</button>
+      </div>
+      <p class="small muted">Difficulty follows the rules edition picked at the top. Saved in this browser.</p>
+    </div>
+  </details>
+  <div id="encToast" class="enc-toast" role="status" hidden></div>
+
   <section class="results">
     <div class="results-head">
       <h2 id="count" aria-live="polite">Creatures</h2>
@@ -109,12 +141,13 @@
 
   <section class="about" id="about">
     <h2>About</h2>
-    <p>Every creature in the free System Reference Documents: the 2014 rules (SRD 5.1) and the 2024 rules (SRD 5.2), with full stat blocks. Pick the rules edition at the top; creatures that are in both editions show a tab for each in their stat block. Star the ones you use (saved in this browser), and copy the link to share a filtered list or a single stat block.</p>
+    <p>Every creature in the free System Reference Documents: the 2014 rules (SRD 5.1) and the 2024 rules (SRD 5.2), with full stat blocks. Pick the rules edition at the top; creatures that are in both editions show a tab for each in their stat block. Star the ones you use (saved in this browser), and copy the link to share a filtered list or a single stat block. The <a href="#encounter">encounter builder</a> adds up the XP of the creatures you pick and rates the fight for your party, by the 2024 XP budgets or the 2014 thresholds and multipliers.</p>
     <p>Stat blocks come from the System Reference Documents 5.1 and 5.2 by Wizards of the Coast LLC, available at <a href="https://dnd.wizards.com/resources/systems-reference-document" rel="noopener">dnd.wizards.com</a> and licensed under the <a href="https://creativecommons.org/licenses/by/4.0/legalcode" rel="noopener">Creative Commons Attribution 4.0 International License</a>. They were retrieved through the <a href="https://open5e.com" rel="noopener">Open5e</a> API, with 2024 sizes and lair XP checked against the <a href="https://github.com/5e-bits/5e-database" rel="noopener">5e-bits database</a>. Creatures from other books (the Monster Manuals and adventures) are not in the SRD and are left out. Unofficial fan content; not affiliated with Wizards of the Coast.</p>
     <p class="muted" id="generated"></p>
     <p><a href="changes.html">See what's changed</a></p>
   </section>
 </main>
+<div id="encPrintOut" class="enc-print" hidden></div>
 
 <footer class="site-footer">
   <div class="wrap">
@@ -147,9 +180,12 @@
 <script src="theme.js?v=dev"></script>
 <script src="nav.js?v=dev"></script>
 <script src="version.js?v=dev"></script>
+<script src="offline.js?v=dev"></script>
 <script src="character.js?v=dev"></script>
 <script src="chart.js?v=dev"></script>
+<script src="statblock.js?v=dev"></script>
 <script src="app.js?v=dev"></script>
+<script src="encounter.js?v=dev"></script>
 <script src="motion.js?v=dev" defer></script><script src="ui.js?v=dev" defer></script>
 </body>
 </html>

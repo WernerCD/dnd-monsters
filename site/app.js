@@ -8,8 +8,6 @@
   };
   var $ = function (s) { return document.querySelector(s); };
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
-  var sgn = function (n) { return (n >= 0 ? '+' : '') + n; };
-  var abMod = function (s) { return Math.floor((s - 10) / 2); };
   var num = function (n) { return Number(n).toLocaleString('en-US'); };
   var crText = function (cr) { return cr === 0.125 ? '1/8' : cr === 0.25 ? '1/4' : cr === 0.5 ? '1/2' : String(cr); };
   var cap = function (s) { return String(s).replace(/^./, function (c) { return c.toUpperCase(); }); };
@@ -22,7 +20,6 @@
   var MOVES = [['fly', 'Fly'], ['hover', 'Hover'], ['swim', 'Swim'], ['burrow', 'Burrow'], ['climb', 'Climb']];
   var LEGS = [['legendary', 'Legendary'], ['lair', 'Lair (2024)']];
   var DEF_GROUPS = [['dr', 'Resistant to'], ['di', 'Immune to'], ['dv', 'Vulnerable to'], ['ci', 'Condition immunity']];
-  var ABIL = ['str', 'dex', 'con', 'int', 'wis', 'cha'];
 
   /* ---------- state (the link carries every filter) ---------- */
   var params = new URLSearchParams(location.search);
@@ -107,6 +104,7 @@
   }
   function card(m) {
     return '<article class="card" data-id="' + m.id + '">' + star(m) +
+      '<button type="button" class="add" data-add="' + m.id + '" aria-label="Add ' + esc(m.name) + ' to the encounter" title="Add to encounter">+</button>' +
       '<div class="card-top"><h3><button type="button" class="card-open" data-open="' + m.id + '" aria-label="' + esc(m.name) + ': stat block">' + esc(m.name) + '</button></h3><span class="cr">CR ' + m.crText + '</span></div>' +
       '<div class="meta">' + esc(typeLine(m)) + '</div>' +
       '<div class="nums"><div><span>AC</span><b>' + m.ac + '</b></div><div><span>HP</span><b>' + m.hp + '</b></div><div><span>XP</span><b>' + num(m.xp) + '</b></div></div>' +
@@ -183,6 +181,7 @@
     syncControls();
     writeURL();
     if (foc) { var el = document.querySelector(foc); if (el) el.focus(); }
+    document.dispatchEvent(new CustomEvent('mon:render'));
   }
 
   /* bar chart: creatures by CR for the current filter (shared DndPlot) */
@@ -200,59 +199,10 @@
     if (crPlot) crPlot.update(opts); else crPlot = DndPlot.bars($('#crChart'), opts);
   }
 
-  /* ---------- stat block ---------- */
-  function md(s) {
-    /* the SRD text uses a little Markdown (bold, italics, bullet lists) */
-    var lines = esc(s).split('\n'), out = [], inList = false;
-    lines.forEach(function (ln) {
-      var t = ln.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/(^|[^*\w])[*_](\S[^*_]*?)[*_](?=[^*\w]|$)/g, '$1<i>$2</i>');
-      if (/^\s*[-*] /.test(ln)) { if (!inList) { out.push('<ul class="sb-ul">'); inList = true; } out.push('<li>' + t.replace(/^\s*[-*] /, '') + '</li>'); return; }
-      if (inList) { out.push('</ul>'); inList = false; }
-      if (t.trim()) out.push(out.length && !/<\/ul>$/.test(out[out.length - 1]) ? '<br>' + t : t);
-    });
-    if (inList) out.push('</ul>');
-    return out.join('');
-  }
-  function section(t, rows, intro) {
-    if (!rows || !rows.length) return '';
-    return '<div class="sb-sec">' + t + '</div>' + (intro ? '<p class="blk">' + md(intro) + '</p>' : '') +
-      rows.map(function (a) { return '<div class="blk"><b>' + esc(a.name) + '.</b> ' + md(a.desc) + '</div>'; }).join('');
-  }
-  function line(label, val) { return val ? '<p><b>' + label + '</b> ' + esc(val) + '</p>' : ''; }
-  function skillText(m) {
-    return Object.keys(m.skills || {}).sort().map(function (k) { return k.split('_').map(cap).join(' ') + ' ' + sgn(m.skills[k]); }).join(', ');
-  }
-  function abilGrid(m, ed) {
-    return '<div class="abil' + (ed === '2024' ? ' saves' : '') + '">' + ABIL.map(function (k, i) {
-      var s = m.ab[i], mod = abMod(s), sv = m.saves && m.saves[k] != null ? m.saves[k] : mod;
-      return '<div><b>' + k.toUpperCase() + '</b>' + s + ' <span class="md">(' + sgn(mod) + ')</span>' +
-        (ed === '2024' ? '<span class="sv" title="Saving throw">Save ' + sgn(sv) + '</span>' : '') + '</div>';
-    }).join('') + '</div>';
-  }
+  /* ---------- stat block (shared statblock.js, STYLE 6i) ---------- */
+  function srdCredit(ed) { return 'From the System Reference Document ' + (ed === '2014' ? '5.1' : '5.2') + ' by Wizards of the Coast LLC, CC BY 4.0.'; }
   function sbBody(m, ed) {
-    var h = '<p class="sb-sub">' + esc(typeLine(m)) + '</p><div class="statblock">';
-    h += '<p><b>Armor Class</b> ' + m.ac + (m.acNote ? ' (' + esc(m.acNote) + ')' : '') +
-      (ed === '2024' && m.init != null ? ' &nbsp; <b>Initiative</b> ' + sgn(m.init) + ' (' + (10 + m.init) + ')' : '') + '</p>';
-    h += '<p><b>Hit Points</b> ' + m.hp + (m.hd ? ' (' + esc(m.hd) + ')' : '') + '</p>';
-    h += '<p><b>Speed</b> ' + esc(speedText(m)) + '</p><hr>';
-    h += abilGrid(m, ed) + '<hr>';
-    if (ed === '2014') {
-      var sv = ABIL.filter(function (k) { return m.saves && m.saves[k] != null; }).map(function (k) { return cap(k) + ' ' + sgn(m.saves[k]); }).join(', ');
-      h += line('Saving Throws', sv);
-    }
-    h += line('Skills', skillText(m));
-    h += line(ed === '2024' ? 'Vulnerabilities' : 'Damage Vulnerabilities', m.vuln);
-    h += line(ed === '2024' ? 'Resistances' : 'Damage Resistances', m.resist);
-    if (ed === '2024') h += line('Immunities', [m.immune, m.condImmune].filter(Boolean).join('; '));
-    else { h += line('Damage Immunities', m.immune); h += line('Condition Immunities', m.condImmune); }
-    h += line('Senses', (m.senses || []).concat(m.pp != null ? ['passive Perception ' + m.pp] : []).join(', '));
-    h += line('Languages', m.lang || '—');
-    h += ed === '2024'
-      ? '<p><b>CR</b> ' + m.crText + ' (XP ' + num(m.xp) + (m.xpLair ? ', or ' + num(m.xpLair) + ' in lair' : '') + '; PB ' + sgn(m.pb) + ')</p>'
-      : '<p><b>Challenge</b> ' + m.crText + ' (' + num(m.xp) + ' XP) &nbsp; <b>Proficiency Bonus</b> ' + sgn(m.pb) + '</p>';
-    h += section('Traits', m.traits) + section('Actions', m.actions) + section('Bonus Actions', m.bonus) +
-      section('Reactions', m.reactions) + section('Legendary Actions', m.legendary, m.legIntro);
-    return h + '</div>';
+    return '<p class="dsb-type sb-type">' + esc(DndStatblock.typeLine(m)) + '</p>' + DndStatblock.html(m, { ed: ed, source: srdCredit(ed) });
   }
   var dlgEd = null, closeDetail = null;
   function openDetail(id, ed) {
@@ -270,8 +220,8 @@
     }).join('') + (hasOther ? '' : '<span class="small muted">Only in the ' + ed + ' SRD.</span>') + '</div>';
     h += sbBody(m, ed);
     h += '<div class="mn-actions"><button type="button" class="btn" data-fav="' + id + '" aria-pressed="' + on + '">' + (on ? '&#9733; Starred' : '&#9734; Star') + '</button>' +
+      '<button type="button" class="btn" data-add="' + id + '">+ Add to encounter</button>' +
       '<button type="button" class="btn" id="copyMon">Copy link to this creature</button></div>';
-    h += '<p class="small muted">From the System Reference Document ' + (ed === '2014' ? '5.1' : '5.2') + ' by Wizards of the Coast LLC, CC BY 4.0.</p>';
     $('#dBody').innerHTML = h;
     var d = $('#detail');
     if (!d.open) { if (d.showModal) d.showModal(); else d.setAttribute('open', ''); if (window.DndUI) DndUI.enter(d.querySelector('.dlg')); }
@@ -413,4 +363,15 @@
     $('#list').innerHTML = '<p class="empty">Could not load the creature data (' + esc(err.message) + ').</p>';
   });
   syncControls();
+
+  /* for encounter.js: the data, the edition and the stat block */
+  window.MonLookup = {
+    ready: function () { return !!DATA; },
+    ed: function () { return state.ed; },
+    get: function (id, ed) { return DATA ? BY_ID[ed || state.ed][id] || null : null; },
+    any: function (id) { return DATA ? BY_ID[state.ed][id] || BY_ID[state.ed === '2014' ? '2024' : '2014'][id] || null : null; },
+    xpByCr: function () { return DATA ? DATA.xpByCr : {}; },
+    statblock: function (m, ed, head) { return DndStatblock.html(m, { ed: ed, head: !!head, source: srdCredit(ed) }); },
+    open: function (id) { openDetail(id); }
+  };
 })();

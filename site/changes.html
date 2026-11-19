@@ -13,8 +13,13 @@
 <meta property="og:title" content="Changes · Monster Lookup">
 <meta property="og:description" content="What has changed on the Monster Lookup, newest first.">
 <meta property="og:url" content="https://wernercd.github.io/dnd-monsters/changes.html">
-<meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M6 3c4 7 5 16 2 26h3c3-10 2-19-5-26zM14 2c4 8 5 17 2 28h3c3-11 2-20-5-28zM22 3c4 7 5 16 2 26h3c3-10 2-19-5-26z' fill='%23c9a227'/%3E%3C/svg%3E">
+<meta property="og:image" content="https://wernercd.github.io/dnd-monsters/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -48,6 +53,16 @@
   <h2>Changes</h2>
   <p class="intro">What has changed on the Monster Lookup, newest first. <a href="./">Back to the monster list</a>.</p>
     <section class="change-day">
+      <h3><time datetime="2026-11-19">November 19, 2026</time></h3>
+      <ul>
+        <li><b>Encounter builder.</b> Add creatures from the list (the + on a card) or from a stat block, set how many of each, and see the total XP and how hard the fight is for your party: the 2024 Low, Moderate and High budgets, or the 2014 Easy to Deadly thresholds with the group multiplier. The party comes from the toolbox's Party page, or set it by hand. The encounter is saved in this browser, has its own link to share, and prints with every creature's stat block.</li>
+        <li><b>Works offline.</b> After one visit the site opens with no signal, creature data included.</li>
+        <li><b>Search from the hub.</b> The D&amp;D Toolbox's "Search every tool" box now finds every creature here and opens its stat block.</li>
+        <li><b>Preview cards.</b> Links to the site show a picture and description, and it can be added to a phone's home screen with its own icon.</li>
+        <li><b>Shared stat block.</b> Stat blocks use the toolbox's shared layout, so they look the same here, in the encounter builder and on the Wild Shape list.</li>
+      </ul>
+    </section>
+    <section class="change-day">
       <h3><time datetime="2026-11-18">November 18, 2026</time></h3>
       <ul>
         <li><b>New site.</b> Every creature in the 2014 SRD (5.1) and the 2024 SRD (5.2), with full stat blocks and a switch between the two editions. Creatures in both editions show a tab for each.</li>
@@ -80,5 +95,6 @@
 <script src="theme.js?v=dev"></script>
 <script src="nav.js?v=dev"></script>
 <script src="version.js?v=dev"></script>
+<script src="offline.js?v=dev"></script>
 </body>
 </html>

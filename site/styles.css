@@ -150,44 +150,11 @@ dialog::backdrop { background: rgba(10, 14, 12, .55); }
 .dlg { position: relative; padding: 22px 22px 18px; overflow: auto; max-height: calc(100vh - 32px); }
 .close { position: absolute; top: 14px; right: 14px; }
 .sb-head h2 { font-size: 1.6rem; padding-right: 44px; }
-.sb-sub { color: var(--muted); font-style: italic; margin: 2px 0 10px; }
-.desc { font-size: 1rem; color: var(--ink); margin: 0 0 6px; }
-.tip { background: var(--chip); border-radius: 8px; padding: 8px 12px; font-size: .92rem; margin: 8px 0 14px; }
-.tip b { color: var(--accent); }
 .ed-tabs { display: flex; gap: 6px; margin: 4px 0 12px; }
 .ed-tabs button { font: inherit; font-size: .85rem; border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); border-radius: 8px; padding: 4px 10px; cursor: pointer; }
 .ed-tabs button[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
-.statblock { border-top: 3px solid var(--gold); border-bottom: 3px solid var(--gold); padding: 10px 0; }
-.statblock p { margin: 3px 0; }
-.statblock hr { border: 0; border-top: 1px solid var(--line); margin: 8px 0; }
-.abil { display: grid; grid-template-columns: repeat(6, 1fr); text-align: center; gap: 4px; margin: 6px 0; }
-.abil.three { grid-template-columns: repeat(3, 1fr); }
-.abil div { background: var(--surface-2); border-radius: 6px; padding: 4px 0; font-size: .85rem; }
-.abil b { display: block; font-size: .7rem; letter-spacing: .06em; color: var(--muted); }
-.abil .mental { opacity: .55; }
-.sb-sec { font-family: Fraunces, Georgia, serif; font-size: 1.05rem; color: var(--gold); border-bottom: 1px solid var(--line); margin: 12px 0 6px; padding-bottom: 2px; }
-.blk { margin: 6px 0; }
-.blk b { font-style: italic; }
 .small { font-size: .82rem; color: var(--muted); }
-.wsnote { font-size: .85rem; color: var(--ink-2); background: var(--surface-2); border-radius: 8px; padding: 8px 12px; margin-top: 12px; }
 
-/* card detail levels, merged list, source picker */
-.view-ctl { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
-.seg-sm button { padding: 5px 11px; min-height: 32px; font-size: .88rem; }
-.list.detail-stats { grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); align-items: start; }
-.list.detail-full { grid-template-columns: repeat(auto-fill, minmax(min(360px, 100%), 1fr)); align-items: start; }
-.card .src { font-size: .78rem; color: var(--muted); margin-top: 6px; }
-.card.book { border-style: dashed; cursor: default; }
-.card.book:hover { transform: none; border-color: var(--line); }
-.cstats { margin-top: 10px; border-top: 1px solid var(--line); padding-top: 8px; font-size: .86rem; }
-.cstats .abil div { font-size: .78rem; }
-.ctraits { margin: 6px 0 4px; color: var(--ink-2); }
-.attacks { list-style: none; margin: 4px 0 0; padding: 0; }
-.attacks li { margin: 3px 0; line-height: 1.35; }
-.statblock.mini { margin-top: 10px; font-size: .84rem; border-width: 2px; }
-.statblock.mini .abil div { font-size: .76rem; }
-.statblock.mini .sb-sec { font-size: .95rem; margin: 8px 0 4px; }
-.nostats { margin: 8px 0 0; }
 .filters { position: relative; }
 .srcpick { position: relative; }
 .srcpick summary { list-style: none; cursor: pointer; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 6px 14px; font-size: .9rem; color: var(--ink-2); }
@@ -229,22 +196,13 @@ dialog::backdrop { background: rgba(10, 14, 12, .55); }
 .tag.leg { background: color-mix(in srgb, var(--gold) 22%, transparent); }
 .tag.lair { background: color-mix(in srgb, var(--accent) 18%, transparent); }
 .fav { min-width: 28px; min-height: 28px; }
-.sb-sub { margin: 0 0 8px; }
 .ed-tabs { flex-wrap: wrap; align-items: center; }
 .ed-tabs button { min-height: 30px; }
-.abil.saves div { padding: 4px 0 5px; }
-.abil .md { color: var(--ink-2); }
-.abil .sv { display: block; font-size: .72rem; color: var(--muted); }
-.blk { margin: 6px 0; }
-.blk > b { font-style: italic; }
-.sb-ul { margin: 4px 0 4px; padding-left: 20px; }
-.sb-ul li { margin: 2px 0; }
 .mn-actions { margin: 14px 0 8px; }
 .btn { min-height: 32px; }
 @media (max-width: 640px) {
   .controls { position: relative; z-index: 6; }
   .controls-grid { gap: 10px 12px; }
-  .abil { grid-template-columns: repeat(3, 1fr); }
   .dlg { padding: 18px 16px; }
   .ctl-search { flex-basis: 100%; }
 }
@@ -272,7 +230,61 @@ dialog::backdrop { background: rgba(10, 14, 12, .55); }
   dialog[open] .close, dialog[open] .mn-actions, dialog[open] .ed-tabs { display: none !important; }
 }
 
-/* === dnd-shared v1.9.1 (canonical copy: WernerCD/dnd shared/dnd-shared.css) === */
+/* encounter builder */
+.enc { padding: 0; margin-top: 14px; scroll-margin-top: 150px; }
+.enc > summary { cursor: pointer; padding: 12px 18px; list-style: revert; }
+.enc > summary h2 { display: inline; font-size: 1.05rem; margin: 0; }
+.enc .encbody { padding: 0 18px 16px; }
+.enc h3 { font-size: .95rem; margin: 6px 0 8px; }
+.enc-grid { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 8px 24px; }
+.enc-list { list-style: none; margin: 0; padding: 0; }
+.enc-list li { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+.enc-name { font: inherit; font-weight: 600; color: var(--ink); background: none; border: 0; padding: 0; cursor: pointer; text-align: left; min-height: 28px; flex: 1 1 140px; }
+.enc-name:hover { color: var(--accent); text-decoration: underline; }
+.enc-meta { font-size: .82rem; color: var(--muted); flex: 1 1 120px; }
+.enc-n { display: inline-flex; align-items: center; gap: 4px; }
+.enc-n .btn { min-width: 32px; padding: 2px 8px; }
+.enc-n input, .enc-group input { width: 3.4em; text-align: center; font: inherit; padding: 4px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink); min-height: 32px; }
+.enc-sub { font-size: .85rem; min-width: 76px; text-align: right; }
+.enc-x { width: 32px; height: 32px; font-size: 1.1rem; line-height: 1; }
+.enc-group { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 8px; }
+.enc-chars { margin: 8px 0; padding-left: 18px; }
+.enc-pmode { margin-bottom: 8px; }
+.enc-verdict { font-size: 1.05rem; margin: 14px 0 8px; }
+.enc-label { display: inline-block; border: 1px solid var(--line); border-radius: 999px; padding: 1px 10px; background: var(--surface-2); }
+.enc-nums { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 0 0 10px; }
+.enc-nums div { display: flex; flex-direction: column; }
+.enc-nums dt { font-size: .74rem; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+.enc-nums dd { margin: 0; font-weight: 600; }
+.enc-meters { display: grid; gap: 6px; margin: 4px 0 8px; max-width: 560px; }
+.enc-meter { display: grid; grid-template-columns: 76px minmax(0, 1fr) 128px; align-items: center; gap: 10px; font-size: .88rem; }
+.enc-track { height: 10px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--line); overflow: hidden; }
+.enc-track span { display: block; height: 100%; background: var(--accent); }
+.enc-meter.reached .enc-track span { background: var(--gold); }
+.enc-mval { text-align: right; color: var(--ink-2); }
+.enc-mval b { font-weight: 600; color: var(--ink); }
+.enc-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px; }
+.enc-note { background: var(--chip); border-radius: 8px; padding: 8px 12px; margin: 0 0 10px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.enc-toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 8px 16px; border-radius: 999px; font-size: .9rem; z-index: 50; box-shadow: var(--shadow); max-width: calc(100vw - 32px); }
+.card .add { position: absolute; top: 10px; right: 42px; min-width: 28px; min-height: 28px; border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); border-radius: 7px; cursor: pointer; font-size: 1.05rem; line-height: 1; padding: 0 6px; }
+.card .add:hover, .card .add:focus-visible { color: var(--accent); border-color: var(--accent); }
+.card .card-top { padding-right: 64px; }
+.sb-type { margin: 0 0 8px; }
+.mn-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+@media (max-width: 640px) {
+  .enc-grid { grid-template-columns: 1fr; }
+  .enc-meter { grid-template-columns: 64px minmax(0, 1fr) 104px; gap: 6px; font-size: .82rem; }
+  .enc .encbody { padding: 0 14px 14px; }
+  .enc { scroll-margin-top: 12px; }
+}
+@media print {
+  .add, #encounter, .enc-toast { display: none !important; }
+  body.print-enc main, body.print-enc .controls, body.print-enc .site-header { display: none !important; }
+  body.print-enc .enc-print { display: block !important; }
+  .enc-psb { break-inside: avoid; margin: 0 0 14px; }
+}
+
+/* === dnd-shared v1.10 (canonical copy: WernerCD/dnd shared/dnd-shared.css) === */
 /* Paste this block unchanged at the END of each site's styles.css. Do not edit it per site;
    change it in the hub repo and re-copy it to every site. It relies on the shared tokens
    (--bg, --surface, --surface-2, --ink, --ink-2, --muted, --line, --accent, --gold, --radius). */
@@ -394,6 +406,27 @@ dialog::backdrop { background: rgba(10, 14, 12, .55); }
   .tm-btn span { display: none; }
   .tm-list, .tm-btn[aria-expanded="true"] + .tm-list { display: block; position: static; transform: none; box-shadow: none; border: 0; padding: 0; min-width: 0; }
 }
+/* stat blocks (statblock.js) */
+.dsb { border-top: 3px solid var(--gold); border-bottom: 3px solid var(--gold); padding: 10px 0; line-height: 1.45; }
+.dsb p { margin: 3px 0; }
+.dsb-head { margin-bottom: 6px; }
+.dsb-name { font-family: Fraunces, Georgia, serif; font-size: 1.35rem; margin: 0; }
+.dsb-type { color: var(--muted); font-style: italic; margin: 0; }
+.dsb-abil { display: grid; grid-template-columns: repeat(6, 1fr); text-align: center; gap: 4px; margin: 8px 0; padding: 8px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.dsb-abil div { background: var(--surface-2); border-radius: 6px; padding: 4px 0; font-size: .85rem; }
+.dsb-abil b { display: block; font-size: .7rem; letter-spacing: .06em; color: var(--muted); }
+.dsb-mod { color: var(--ink-2); }
+.dsb-sv { display: block; font-size: .72rem; color: var(--muted); }
+.dsb-sec { font-family: Fraunces, Georgia, serif; font-size: 1.05rem; font-weight: 600; color: var(--gold); border-bottom: 1px solid var(--line); margin: 12px 0 6px; padding-bottom: 2px; }
+.dsb-blk { margin: 6px 0; }
+.dsb-blk > b { font-style: italic; }
+.dsb ul { margin: 4px 0; padding-left: 20px; }
+.dsb ul li { margin: 2px 0; }
+.dsb-src { font-size: .78rem; color: var(--muted); margin-top: 10px !important; }
+.dsb.mini { font-size: .84rem; border-width: 2px; padding: 8px 0; }
+.dsb.mini .dsb-abil div { font-size: .76rem; }
+.dsb.mini .dsb-sec { font-size: .95rem; margin: 8px 0 4px; }
+@media (max-width: 520px) { .dsb-abil { grid-template-columns: repeat(3, 1fr); } }
 /* print: paper-friendly, no chrome. Sites add their own rules to hide tool controls. */
 @media print {
   :root, :root:not([data-theme="light"]), :root[data-theme="dark"] { --bg: #fff; --surface: #fff; --surface-2: #f3f3f3; --ink: #000; --ink-2: #222; --muted: #555; --line: #bbb; --shadow: none; --accent: #2f6b4f; --accent-ink: #ffffff; --gold: #a8841c; --warn: #9a4b1c; --warn-bg: #f7e6d8; --chip: #e6efe9; color-scheme: light; }
@@ -401,8 +434,8 @@ dialog::backdrop { background: rgba(10, 14, 12, .55); }
   .hub-bar, .tool-menu, .char-pick, .char-import, .plot-tip, .plot-table summary, #themeBtn, .site-footer .foot-links, button, dialog::backdrop { display: none !important; }
   .site-header { border-bottom: 1px solid #000; }
   a { color: inherit; text-decoration: none; }
-  .card, .change-day li, .statblock { break-inside: avoid; }
+  .card, .change-day li, .statblock, .dsb { break-inside: avoid; }
   .ui-anim [data-reveal] > * { opacity: 1 !important; }
   .plot-fig { break-inside: avoid; }
 }
-/* === end dnd-shared v1.9.1 === */
+/* === end dnd-shared v1.10 === */

@@ -245,12 +245,36 @@ def main():
     OUT.parent.mkdir(parents=True, exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, separators=(",", ":"))
+    write_search(out)
     for ed, rows in out.items():
         print(f"{ed}: {len(rows)} creatures, {sum(r['isLegendary'] for r in rows)} legendary, "
               f"{sum(r['lair'] for r in rows)} lair, sizes {dict(Counter(r['size'] for r in rows))}")
     for w in warn:
         print("  warn:", w)
     print(f"wrote {OUT.relative_to(ROOT)} ({OUT.stat().st_size // 1024} KB)")
+
+
+def write_search(out):
+    """site/search.json for the hub's "Search every tool" box (STYLE.md 6j): names and short facts only,
+    one entry per name, linking to the stat block (?m=<id>, in the edition it is in)."""
+    by_name = {}
+    for ed in ("2024", "2014"):
+        for r in out[ed]:
+            by_name.setdefault(r["name"], {})[ed] = r
+    items = []
+    for name in sorted(by_name):
+        e = by_name[name]
+        r = e.get("2024") or e["2014"]
+        eds = [ed for ed in ("2014", "2024") if ed in e]
+        crs = {e[ed]["crText"] for ed in eds}
+        cr = ("CR " + r["crText"]) if len(crs) == 1 else "CR " + ", ".join(f"{e[ed]['crText']} ({ed})" for ed in eds)
+        t = f"{r['size']} {r['type']}, {cr} · {' and '.join(eds)} SRD"
+        u = f"?m={r['id']}" if "2024" in e else f"?ed=2014&m={r['id']}"
+        items.append({"n": name, "t": t, "k": "Monster", "u": u})
+    p = ROOT / "site" / "search.json"
+    with open(p, "w", encoding="utf-8") as f:
+        json.dump({"v": 1, "items": items}, f, ensure_ascii=False, separators=(",", ":"))
+    print(f"wrote {p.relative_to(ROOT)} ({len(items)} names, {p.stat().st_size // 1024} KB)")
 
 
 if __name__ == "__main__":
