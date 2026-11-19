@@ -30,13 +30,15 @@ Every creature in the free System Reference Documents, with full stat blocks, fo
 | `tools/fetch_source.py` | Refreshes `source/` from Open5e and 5e-bits (run by hand) |
 | `source/` | Raw SRD exports |
 | `tools/check_site.py` | Smoke check of the pages and data (shared D&D Toolbox file) |
+| `tools/smoke_test.py` | Browser test suite in Playwright (shared D&D Toolbox file) |
+| `tests/site_test.py` | This site's own browser checks: counts, filters, stat block links, 2024 sizes, chart, stars |
 
 ## Run locally
 ```bash
 python tools/build_data.py
 python -m http.server 8765 --directory site
 ```
-Checks (CI runs the same before every deploy): `python tools/check_site.py`. Every push to `main` builds the data, runs the check and deploys to GitHub Pages via `.github/workflows/pages.yml`.
+Checks (CI runs the same before every deploy): `python tools/check_site.py` and `python tools/smoke_test.py` (needs `pip install playwright` and `python -m playwright install chromium`). Every push to `main` builds the data, runs both and deploys to GitHub Pages via `.github/workflows/pages.yml`.
 
 ## Credits and license
 - Code: MIT, see [LICENSE](LICENSE).
