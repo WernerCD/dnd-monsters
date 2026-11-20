@@ -122,14 +122,29 @@
         </div>
       </div>
       <div id="encResult" aria-live="polite"></div>
-      <div id="encInitOut" aria-live="polite"></div>
       <div class="enc-actions">
         <button type="button" class="chip" id="encCopy">Copy encounter link</button>
         <button type="button" class="chip" id="encPrint">Print with stat blocks</button>
-        <button type="button" class="chip" id="encInit">Roll initiative</button>
         <button type="button" class="chip" id="encClear">Clear</button>
       </div>
       <p class="small muted">Difficulty follows the rules edition picked at the top. Saved in this browser.</p>
+      <details class="cu" id="cuSec">
+        <summary><h3>Custom creatures <span class="small muted" id="cuCount"></span></h3></summary>
+        <p class="small">Add a creature from a book you own: its name, CR, AC and hit points (initiative, type and size are optional). It counts toward the XP and difficulty like any other creature and joins the initiative tracker. <b>Custom creatures are kept in this browser only</b>; nothing is uploaded. An encounter link carries the custom creatures in it, so whoever opens it gets them too.</p>
+        <form id="cuForm" class="cu-form" autocomplete="off">
+          <input type="hidden" name="cid">
+          <label class="cu-wide">Name <input name="cname" required maxlength="60"></label>
+          <label>CR <select name="cr"></select></label>
+          <label>AC <input name="ac" type="number" min="0" max="40" required></label>
+          <label>Hit points <input name="hp" type="number" min="1" max="9999" required></label>
+          <label>Initiative bonus <input name="init" type="number" min="-10" max="30" placeholder="optional"></label>
+          <label>Type <select name="ctype"><option value="">(optional)</option><option>Aberration</option><option>Beast</option><option>Celestial</option><option>Construct</option><option>Dragon</option><option>Elemental</option><option>Fey</option><option>Fiend</option><option>Giant</option><option>Humanoid</option><option>Monstrosity</option><option>Ooze</option><option>Plant</option><option>Undead</option></select></label>
+          <label>Size <select name="csize"><option value="">(optional)</option><option>Tiny</option><option>Small</option><option>Medium</option><option>Large</option><option>Huge</option><option>Gargantuan</option></select></label>
+          <div class="cu-wide cu-btns"><button type="submit" class="btn" id="cuSave">Save creature</button> <button type="button" class="btn" id="cuCancel" hidden>Cancel edit</button> <span class="small" id="cuMsg" role="status"></span></div>
+        </form>
+        <ul class="cu-list" id="cuList"></ul>
+      </details>
+      <div class="fight" id="fight"></div>
     </div>
   </details>
   <div id="encToast" class="enc-toast" role="status" hidden></div>
@@ -191,6 +206,7 @@
 <script src="statblock.js?v=dev"></script>
 <script src="app.js?v=dev"></script>
 <script src="encounter.js?v=dev"></script>
+<script src="fight.js?v=dev"></script>
 <script src="motion.js?v=dev" defer></script><script src="ui.js?v=dev" defer></script>
 </body>
 </html>

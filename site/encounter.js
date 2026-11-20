@@ -47,8 +47,35 @@
     if (!groups.length) groups = [{ n: 4, lvl: 3 }];
     return { v: 1, list: list, party: { mode: p.mode === 'manual' ? 'manual' : 'party', groups: groups }, lair: !!e.lair };
   }
-  var enc = clean(store.get(KEY, null)), undo = null, incoming = null;
-  function save() { store.set(KEY, enc); var io = document.getElementById('encInitOut'); if (io) io.innerHTML = ''; }
+  var enc = clean(store.get(KEY, null)), undo = null, incoming = null, incomingCu = [];
+  function save() { store.set(KEY, enc); }
+
+  /* ---------- custom creatures (this browser only): 'mon.custom' = [{ id: 'cu-..', name, cr, ac, hp, init, type, size }] ---------- */
+  var CUSTOM = 'mon.custom';
+  var TYPES = ['Aberration', 'Beast', 'Celestial', 'Construct', 'Dragon', 'Elemental', 'Fey', 'Fiend', 'Giant', 'Humanoid', 'Monstrosity', 'Ooze', 'Plant', 'Undead'];
+  var SIZES = ['Tiny', 'Small', 'Medium', 'Large', 'Huge', 'Gargantuan'];
+  function crText(cr) { return cr === 0.125 ? '1/8' : cr === 0.25 ? '1/4' : cr === 0.5 ? '1/2' : String(cr); }
+  function cleanCu(c) {
+    if (!c || typeof c !== 'object' || typeof c.name !== 'string' || !c.name.trim()) return null;
+    var cr = Number(c.cr); if (!isFinite(cr) || cr < 0 || cr > 30) cr = 0;
+    var id = typeof c.id === 'string' && /^cu-[a-z0-9]{1,16}$/.test(c.id) ? c.id : 'cu-' + Math.random().toString(36).slice(2, 10);
+    return { id: id, name: c.name.trim().slice(0, 60), cr: cr, ac: int(c.ac, 0, 40), hp: int(c.hp, 1, 9999), init: c.init === '' || c.init == null ? null : int(c.init, -10, 30),
+      type: TYPES.indexOf(c.type) >= 0 ? c.type : '', size: SIZES.indexOf(c.size) >= 0 ? c.size : '' };
+  }
+  function customs() { var l = store.get(CUSTOM, []); return (Array.isArray(l) ? l : []).map(cleanCu).filter(Boolean); }
+  function saveCustoms(l) { store.set(CUSTOM, l); }
+  function cuGet(id) { return customs().filter(function (c) { return c.id === id; })[0] || null; }
+  function cuRec(c) {   // a creature record the rest of the page understands (facts only)
+    var t = crText(c.cr);
+    return { id: c.id, name: c.name, size: c.size, type: c.type, ac: c.ac, hp: c.hp, init: c.init, cr: c.cr, crText: t, xp: M.xpByCr()[t] || 0, custom: true };
+  }
+  function rec(id, ed) {   // -> { m, ed } for an SRD creature or a custom one, or null
+    if (/^cu-/.test(id)) { var c = cuGet(id); return c ? { m: cuRec(c), ed: ed || M.ed() } : null; }
+    ed = ed || M.ed();
+    var m = M.get(id, ed); if (m) return { m: m, ed: ed };
+    var o = ed === '2014' ? '2024' : '2014'; m = M.get(id, o);
+    return m ? { m: m, ed: o } : null;
+  }
 
   /* ---------- the hub's party ---------- */
   function hubParty() {
@@ -77,8 +104,8 @@
   function rows() {
     var ed = M.ed();
     return enc.list.map(function (x) {
-      var m = M.get(x.id, ed) || M.any(x.id);
-      return m ? { id: x.id, n: x.n, m: m, ed: M.get(x.id, ed) ? ed : (ed === '2014' ? '2024' : '2014') } : null;
+      var r = rec(x.id, ed);
+      return r ? { id: x.id, n: x.n, m: r.m, ed: r.ed } : null;
     }).filter(Boolean);
   }
   function compute() {
@@ -109,7 +136,9 @@
     u.searchParams.set('ed', c.ed);
     var cnt = {}; c.party.levels.forEach(function (l) { cnt[l] = (cnt[l] || 0) + 1; });
     var p = Object.keys(cnt).map(function (l) { return cnt[l] + 'x' + l; }).join('+');
-    u.hash = 'encounter&c=' + enc.list.map(function (x) { return x.id + ':' + x.n; }).join(',') + (p ? '&p=' + p : '') + (c.lairOn ? '&l=1' : '');
+    var cu = enc.list.map(function (x) { return /^cu-/.test(x.id) ? cuGet(x.id) : null; }).filter(Boolean);
+    u.hash = 'encounter&c=' + enc.list.map(function (x) { return x.id + ':' + x.n; }).join(',') + (p ? '&p=' + p : '') + (c.lairOn ? '&l=1' : '') +
+      (cu.length ? '&x=' + encodeURIComponent(JSON.stringify(cu)) : '');
     return u.href;
   }
   function parseHash() {
@@ -117,9 +146,16 @@
     if (h[0] !== 'encounter') return null;
     var o = {}; h.slice(1).forEach(function (kv) { var i = kv.indexOf('='); if (i > 0) o[kv.slice(0, i)] = decodeURIComponent(kv.slice(i + 1)); });
     if (!o.c) return { open: true };
+    var cu = []; try { cu = (JSON.parse(o.x || '[]') || []).map(cleanCu).filter(Boolean).slice(0, 30); } catch (e) { cu = []; }
     var list = o.c.split(',').map(function (s) { var a = s.split(':'); return { id: a[0], n: a[1] }; });
     var groups = (o.p || '').split('+').map(function (s) { var a = s.split('x'); return { n: a[0], lvl: a[1] }; }).filter(function (g) { return g.n && g.lvl; });
-    return { open: true, enc: clean({ list: list, party: { mode: groups.length ? 'manual' : enc.party.mode, groups: groups.length ? groups : enc.party.groups }, lair: o.l === '1' }) };
+    return { open: true, cu: cu, enc: clean({ list: list, party: { mode: groups.length ? 'manual' : enc.party.mode, groups: groups.length ? groups : enc.party.groups }, lair: o.l === '1' }) };
+  }
+  function mergeCustoms(cu) {   // add the link's custom creatures; never overwrite one this browser already has
+    if (!cu || !cu.length) return;
+    var mine = customs(), ids = mine.map(function (c) { return c.id; });
+    cu.forEach(function (c) { if (ids.indexOf(c.id) < 0) mine.push(c); });
+    saveCustoms(mine);
   }
   function sameList(a, b) { return JSON.stringify(a.list) === JSON.stringify(b.list); }
 
@@ -136,14 +172,14 @@
     $('#encSum').textContent = c.count ? c.count + ' creature' + (c.count === 1 ? '' : 's') + ' · ' + (c.label || num(c.total) + ' XP') : '';
     // notice (link or undo)
     var nt = '';
-    if (incoming) nt = '<div class="enc-note" role="status">This link has an encounter: ' + esc(incoming.list.map(function (x) { var m = M.any(x.id); return (m ? m.name : x.id) + (x.n > 1 ? ' ×' + x.n : ''); }).join(', ')) +
+    if (incoming) nt = '<div class="enc-note" role="status">This link has an encounter: ' + esc(incoming.list.map(function (x) { var m = M.any(x.id) || incomingCu.filter(function (c) { return c.id === x.id; })[0]; return (m ? m.name : x.id) + (x.n > 1 ? ' ×' + x.n : ''); }).join(', ')) +
       '. <button type="button" class="btn" data-enc="take">Load it</button> <button type="button" class="btn" data-enc="keep">Keep mine</button></div>';
     else if (undo) nt = '<div class="enc-note" role="status">Encounter cleared. <button type="button" class="btn" data-enc="undo">Undo</button></div>';
     $('#encNote').innerHTML = nt;
     // creatures
     $('#encList').innerHTML = c.rows.map(function (r) {
-      return '<li data-row="' + esc(r.id) + '"><button type="button" class="enc-name" data-enc-open="' + esc(r.id) + '">' + esc(r.m.name) + '</button>' +
-        '<span class="enc-meta">CR ' + esc(r.m.crText) + ' · ' + num(r.xpEach) + ' XP' + (r.ed !== ed ? ' · ' + r.ed + ' only' : '') + '</span>' +
+      return '<li data-row="' + esc(r.id) + '"><button type="button" class="enc-name" ' + (r.m.custom ? 'data-cu-edit="' : 'data-enc-open="') + esc(r.id) + '"' + (r.m.custom ? ' title="Edit this custom creature"' : '') + '>' + esc(r.m.name) + '</button>' +
+        '<span class="enc-meta">' + (r.m.custom ? 'Custom · ' : '') + 'CR ' + esc(r.m.crText) + ' · ' + num(r.xpEach) + ' XP' + (r.ed !== ed && !r.m.custom ? ' · ' + r.ed + ' only' : '') + '</span>' +
         '<span class="enc-n"><button type="button" class="btn" data-enc="dec" data-id="' + esc(r.id) + '" aria-label="One fewer ' + esc(r.m.name) + '">−</button>' +
         '<input type="number" min="1" max="99" value="' + r.n + '" data-enc-n="' + esc(r.id) + '" aria-label="How many ' + esc(r.m.name) + '">' +
         '<button type="button" class="btn" data-enc="inc" data-id="' + esc(r.id) + '" aria-label="One more ' + esc(r.m.name) + '">+</button></span>' +
@@ -188,7 +224,31 @@
     $('#encResult').innerHTML = r;
     $('#encLairWrap').hidden = !c.anyLair;
     $('#encLair').checked = enc.lair;
-    ['encCopy', 'encPrint', 'encClear', 'encInit'].forEach(function (id) { $('#' + id).disabled = !c.count; });
+    ['encCopy', 'encPrint', 'encClear'].forEach(function (id) { $('#' + id).disabled = !c.count; });
+    renderCustoms();
+    document.dispatchEvent(new CustomEvent('enc:render'));
+  }
+  function renderCustoms() {
+    var l = customs();
+    $('#cuCount').textContent = l.length ? '(' + l.length + ')' : '';
+    $('#cuList').innerHTML = l.map(function (c) {
+      return '<li><span class="cu-name">' + esc(c.name) + '</span> <span class="enc-meta">' + esc([c.size, c.type].filter(Boolean).join(' ')) + (c.size || c.type ? ' · ' : '') +
+        'CR ' + crText(c.cr) + ' · AC ' + (c.ac == null ? '?' : c.ac) + ' · HP ' + (c.hp == null ? '?' : c.hp) + (c.init != null ? ' · Init ' + (c.init >= 0 ? '+' : '') + c.init : '') + '</span>' +
+        '<span class="cu-btns"><button type="button" class="btn" data-add="' + c.id + '">+ Add</button><button type="button" class="btn" data-cu-edit="' + c.id + '">Edit</button>' +
+        '<button type="button" class="btn" data-cu-del="' + c.id + '">Delete</button></span></li>';
+    }).join('');
+  }
+  function crSort(a, b) { var f = function (k) { var p = k.split('/'); return p.length > 1 ? p[0] / p[1] : +k; }; return f(a) - f(b); }
+  function crNum(k) { var p = String(k).split('/'); return p.length > 1 ? p[0] / p[1] : +k; }
+  function cuForm(c) {   // fill the form for a new creature (c null) or to edit one
+    var f = $('#cuForm'); if (!f) return;
+    if (!f.elements.cr.options.length) f.elements.cr.innerHTML = Object.keys(M.xpByCr()).sort(crSort).map(function (k) { return '<option value="' + k + '">' + k + '</option>'; }).join('');
+    f.elements.cid.value = c ? c.id : ''; f.elements.cname.value = c ? c.name : ''; f.elements.cr.value = c ? crText(c.cr) : '1';
+    f.elements.ac.value = c && c.ac != null ? c.ac : ''; f.elements.hp.value = c && c.hp != null ? c.hp : ''; f.elements.init.value = c && c.init != null ? c.init : '';
+    f.elements.ctype.value = c ? c.type : ''; f.elements.csize.value = c ? c.size : '';
+    $('#cuSave').textContent = c ? 'Save changes' : 'Save creature';
+    $('#cuCancel').hidden = !c;
+    if (c) { $('#cuSec').open = true; f.elements.cname.focus(); }
   }
 
   /* ---------- actions ---------- */
@@ -196,7 +256,7 @@
     var x = enc.list.filter(function (e) { return e.id === id; })[0];
     if (x) x.n = Math.min(99, x.n + 1); else enc.list.push({ id: id, n: 1 });
     undo = null; save(); render();
-    var m = M.any(id), box = $('#encounter');
+    var r0 = rec(id), m = r0 && r0.m, box = $('#encounter');
     if (!box.open) box.open = true;
     toast((m ? m.name : 'Creature') + ' added to the encounter');
   }
@@ -210,21 +270,17 @@
     enc.list.forEach(function (x) { if (x.id === id) x.n = Math.max(1, Math.min(99, n)); });
     save(); render();
   }
-  function initMod(m) { return m.init != null ? m.init : (m.ab ? Math.floor((m.ab[1] - 10) / 2) : 0); }
-  function rollInit() {   // one roll per creature group, highest first (DndDice shows each roll and logs it)
-    if (!window.DndDice) return;
-    var out = rows().map(function (r) {
-      var k = initMod(r.m), expr = '1d20' + (k ? (k > 0 ? '+' : '') + k : ''), res = DndDice.roll(expr, r.m.name + (r.n > 1 ? ' ×' + r.n : '') + ' initiative');
-      return { name: r.m.name, n: r.n, total: res ? res.total : null, expr: expr };
-    }).sort(function (a, b) { return b.total - a.total; });
-    $('#encInitOut').innerHTML = out.length ? '<h3>Initiative</h3><ol class="enc-init" id="encInitList">' + out.map(function (x) {
-      return '<li><b>' + x.total + '</b> ' + esc(x.name) + (x.n > 1 ? ' ×' + x.n : '') + ' <span class="small muted">(' + esc(x.expr) + ')</span></li>';
-    }).join('') + '</ol><p class="small muted">One roll per kind of creature, highest first. Add the characters\' rolls at the table.</p>' : '';
-  }
   function printIt() {
     var c = compute(), out = '<h2>Encounter: ' + esc(c.label ? c.label + ' for ' + partyText(c.party.levels) : num(c.total) + ' XP') + '</h2>' +
       '<p>' + c.rows.map(function (r) { return esc(r.m.name) + ' ×' + r.n; }).join(', ') + ' · total ' + num(c.total) + ' XP' + (c.ed === '2014' ? ', adjusted ' + num(c.eff) + ' XP' : '') + '</p>';
-    c.rows.forEach(function (r) { out += '<div class="enc-psb">' + (r.n > 1 ? '<p class="small">×' + r.n + '</p>' : '') + M.statblock(r.m, r.ed, true) + '</div>'; });
+    c.rows.forEach(function (r) {
+      var sb = r.m.custom
+        ? '<div class="dsb"><div class="dsb-head"><h3 class="dsb-name">' + esc(r.m.name) + '</h3><p class="dsb-type">' + esc([r.m.size, r.m.type].filter(Boolean).join(' ') || 'Custom creature') + '</p></div>' +
+          '<p><b>Armor Class</b> ' + (r.m.ac == null ? '?' : r.m.ac) + (r.m.init != null ? ' &nbsp; <b>Initiative</b> ' + (r.m.init >= 0 ? '+' : '') + r.m.init : '') + '</p><p><b>Hit Points</b> ' + (r.m.hp == null ? '?' : r.m.hp) + '</p>' +
+          '<p><b>CR</b> ' + esc(r.m.crText) + ' (' + num(r.m.xp) + ' XP)</p><p class="dsb-src">Custom creature, kept in this browser. Use the stat block from your own book.</p></div>'
+        : M.statblock(r.m, r.ed, true);
+      out += '<div class="enc-psb">' + (r.n > 1 ? '<p class="small">×' + r.n + '</p>' : '') + sb + '</div>';
+    });
     var p = $('#encPrintOut'); p.innerHTML = out; p.hidden = false;
     document.body.classList.add('print-enc');
     var done = function () { document.body.classList.remove('print-enc'); p.hidden = true; window.removeEventListener('afterprint', done); };
@@ -241,10 +297,17 @@
       return;
     }
     if (t.dataset.encOpen) return M.open(t.dataset.encOpen);
+    if (t.dataset.cuEdit) return cuForm(cuGet(t.dataset.cuEdit));
+    if (t.dataset.cuDel) {
+      var cd = cuGet(t.dataset.cuDel); if (!cd) return;
+      if (!confirm('Delete the custom creature "' + cd.name + '" from this browser? It is also taken out of the encounter.')) return;
+      saveCustoms(customs().filter(function (c) { return c.id !== cd.id; }));
+      enc.list = enc.list.filter(function (x) { return x.id !== cd.id; }); save(); render(); return;
+    }
+    if (t.id === 'cuCancel') { cuForm(null); return; }
     var a = t.dataset.enc; if (!a) {
       if (t.id === 'encCopy') return copy(t);
       if (t.id === 'encPrint') return printIt();
-      if (t.id === 'encInit') return rollInit();
       if (t.id === 'encClear') { undo = JSON.parse(JSON.stringify(enc.list)); enc.list = []; save(); return render(); }
       return;
     }
@@ -254,8 +317,8 @@
     else if (a === 'dec' && cur) { if (cur.n > 1) setN(id, cur.n - 1); else { enc.list = enc.list.filter(function (x) { return x.id !== id; }); save(); render(); } }
     else if (a === 'del') { enc.list = enc.list.filter(function (x) { return x.id !== id; }); save(); render(); var f = $('#encList button'); if (f) f.focus(); }
     else if (a === 'undo') { enc.list = undo || []; undo = null; save(); render(); }
-    else if (a === 'take') { enc = incoming; incoming = null; save(); history.replaceState(null, '', location.pathname + location.search + '#encounter'); render(); }
-    else if (a === 'keep') { incoming = null; history.replaceState(null, '', location.pathname + location.search + '#encounter'); render(); }
+    else if (a === 'take') { mergeCustoms(incomingCu); enc = incoming; incoming = null; incomingCu = []; save(); history.replaceState(null, '', location.pathname + location.search + '#encounter'); render(); }
+    else if (a === 'keep') { incoming = null; incomingCu = []; history.replaceState(null, '', location.pathname + location.search + '#encounter'); render(); }
     else if (a === 'pparty') { enc.party.mode = 'party'; save(); render(); }
     else if (a === 'pmanual') { enc.party.mode = 'manual'; save(); render(); }
     else if (a === 'gadd') { enc.party.groups.push({ n: 1, lvl: enc.party.groups[enc.party.groups.length - 1].lvl }); save(); render(); }
@@ -272,6 +335,18 @@
     }
     if (t.id === 'encLair') { enc.lair = t.checked; save(); render(); }
   });
+  document.addEventListener('submit', function (ev) {
+    if (ev.target.id !== 'cuForm') return;
+    ev.preventDefault();
+    var e = ev.target.elements;
+    var c = cleanCu({ id: e.cid.value || undefined, name: e.cname.value, cr: crNum(e.cr.value), ac: e.ac.value, hp: e.hp.value, init: e.init.value, type: e.ctype.value, size: e.csize.value });
+    if (!c || c.ac == null || c.hp == null || e.ac.value === '' || e.hp.value === '') { $('#cuMsg').textContent = 'Give it a name, AC and hit points.'; return; }
+    var l = customs(), i = -1; l.forEach(function (x, k) { if (x.id === c.id) i = k; });
+    if (i >= 0) l[i] = c; else l.push(c);
+    saveCustoms(l);
+    $('#cuMsg').textContent = (i >= 0 ? 'Saved changes to ' : 'Saved ') + c.name + '.';
+    cuForm(null); render();
+  });
   function copy(btn) {
     var link = shareLink(compute()), label = btn.textContent;
     var done = function () { btn.textContent = 'Link copied'; if (window.DndUI) DndUI.pop(btn); setTimeout(function () { btn.textContent = label; }, 1500); };
@@ -279,7 +354,7 @@
     else prompt('Copy this link:', link);
   }
   window.addEventListener('storage', function (ev) {
-    if (ev.key === KEY) { enc = clean(store.get(KEY, null)); render(); }
+    if (ev.key === KEY || ev.key === CUSTOM) { if (ev.key === KEY) enc = clean(store.get(KEY, null)); render(); }
     else if (ev.key === PARTY || ev.key === 'dnd.characters') render();
   });
   if (window.DndChar && DndChar.onChange) DndChar.onChange(function () { render(); });
@@ -287,8 +362,8 @@
   function fromHash() {
     var h = parseHash(); if (!h) return;
     if (h.enc) {
-      if (!enc.list.length || sameList(enc, h.enc)) { enc = h.enc; save(); history.replaceState(null, '', location.pathname + location.search + '#encounter'); }
-      else incoming = h.enc;
+      if (!enc.list.length || sameList(enc, h.enc)) { mergeCustoms(h.cu); enc = h.enc; save(); history.replaceState(null, '', location.pathname + location.search + '#encounter'); }
+      else { incoming = h.enc; incomingCu = h.cu || []; }
     }
     var box = $('#encounter'); box.open = true;
     setTimeout(function () { box.scrollIntoView({ block: 'start' }); }, 0);
@@ -300,5 +375,6 @@
   });
   window.addEventListener('hashchange', function () { fromHash(); render(); });
   if (enc.list.length) $('#encounter').open = true;
-  window.MonEncounter = { add: add, compute: compute, link: function () { return shareLink(compute()); } };
+  window.MonEncounter = { add: add, compute: compute, rows: rows, rec: rec, link: function () { return shareLink(compute()); } };
+  document.addEventListener('mon:render', function once() { document.removeEventListener('mon:render', once); cuForm(null); });
 })();

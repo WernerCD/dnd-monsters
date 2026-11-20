@@ -3,6 +3,13 @@
 run(page, base, check): page is a fresh Playwright page (desktop size), base the site URL,
 check(cond, message) records a pass or a failure.
 """
+import re
+
+
+
+def fx_names(page):
+    """names in the initiative tracker, in turn order, without the "Turn" badge"""
+    return [re.sub(r"^turn\s+", "", n.split("\n")[0].strip(), flags=re.I) for n in page.locator("#fxList .fx-name").all_inner_texts()]
 
 
 def count_text(page):
@@ -124,11 +131,74 @@ def run(page, base, check):
     page.locator('[data-enc="undo"]').click()
     check(page.locator("#encList li").count() == 3, "Undo brings it back")
 
-    # initiative rolls for the encounter's creatures (shared dice.js)
-    page.locator("#encInit").click()
-    page.wait_for_timeout(150)
-    check(page.locator("#encInitList li").count() == 3, "Roll initiative gives one roll per kind of creature")
     page.evaluate("localStorage.removeItem('dnd.encounter')")
+
+    # custom creatures: kept in this browser, count toward XP, edit and delete
+    page.on("dialog", lambda d: d.accept())
+    page.evaluate("['dnd.encounter', 'dnd.encounter.fight', 'mon.custom'].forEach(k => localStorage.removeItem(k))")
+    load(page, base + "?ed=2024")
+    page.locator('#list [data-add="ogre"]').click()
+    page.locator('[data-enc="inc"][data-id="ogre"]').click()
+    page.locator("#cuSec > summary").click()
+    check("kept in this browser only" in page.locator("#cuSec").inner_text(), "the custom creature form says it stays in this browser")
+    page.locator('#cuForm [name="cname"]').fill("Bog Hag")
+    page.locator('#cuForm [name="cr"]').select_option("3")
+    page.locator('#cuForm [name="ac"]').fill("15")
+    page.locator('#cuForm [name="hp"]').fill("60")
+    page.locator('#cuForm [name="init"]').fill("2")
+    page.locator("#cuSave").click()
+    check(page.locator("#cuList li").count() == 1, "a custom creature is saved")
+    page.locator("#cuList [data-add]").click()
+    page.wait_for_timeout(100)
+    check(page.locator("#encTotal").inner_text() == "1,600", f"a CR 3 custom creature adds 700 XP (2 ogres + it = 1,600; got {page.locator('#encTotal').inner_text()!r})")
+    page.locator("#cuList [data-cu-edit]").click()
+    page.locator('#cuForm [name="hp"]').fill("75")
+    page.locator("#cuSave").click()
+    check("HP 75" in page.locator("#cuList").inner_text(), "a custom creature can be edited")
+    link = page.evaluate("MonEncounter.link()")
+    check("&x=" in link and "Bog%20Hag" in link, "the encounter link carries the custom creature")
+
+    # initiative tracker: one row per copy, turns and rounds, damage, defeated creatures are skipped, conditions, reload
+    page.locator("#fxStart").click()
+    page.wait_for_timeout(150)
+    rows = page.locator("#fxList .fx")
+    check(rows.count() == 3, f"Start fight gives every copy its own row ({rows.count()})")
+    check(page.locator("#fxList .fx.cur").count() == 1 and "Round 1" in page.locator("#fxRound").inner_text(), "the fight starts in round 1 with one creature's turn")
+    names = [n.split("\n")[0] for n in page.locator("#fxList .fx-name").all_inner_texts()]
+    page.evaluate("""() => { const k = MonFight.order().map(x => x.k);   // fixed order for the test: Hag 20, Ogre 1 15, Ogre 2 10
+        const f = JSON.parse(localStorage.getItem('dnd.encounter.fight'));
+        f.list.forEach(x => { x.init = x.name === 'Bog Hag' ? 20 : x.name === 'Ogre 1' ? 15 : 10; }); f.cur = f.list.find(x => x.name === 'Bog Hag').k; f.round = 1;
+        localStorage.setItem('dnd.encounter.fight', JSON.stringify(f)); }""")
+    load(page, base + "?ed=2024")
+    check(page.locator("#fxList .fx").count() == 3 and "Bog Hag's turn" in page.locator("#fxRound").inner_text(), "a reload keeps the fight")
+    order = fx_names(page)
+    check(order == ["Bog Hag", "Ogre 1", "Ogre 2"], f"turn order follows initiative ({order})")
+    o1 = page.locator("#fxList .fx").nth(1).get_attribute("data-fx-row")
+    page.locator(f'[data-fx-amt="{o1}"]').fill("200")
+    page.locator(f'[data-fx="dmg"][data-k="{o1}"]').click()
+    check("dead" in (page.locator(f'[data-fx-row="{o1}"]').get_attribute("class") or "") and page.locator(f'[data-fx-hp="{o1}"]').input_value() == "0", "damage to 0 HP marks a creature defeated")
+    page.locator('[data-fx="next"]').click()
+    check("Ogre 2's turn" in page.locator("#fxRound").inner_text(), "Next turn skips the defeated creature")
+    page.locator('[data-fx="next"]').click()
+    check("Round 2" in page.locator("#fxRound").inner_text(), "after the last creature the round goes up")
+    hag = page.locator("#fxList .fx").nth(0).get_attribute("data-fx-row")
+    page.locator(f'[data-fx-cond="{hag}"]').select_option("prone")
+    chip = page.locator(f'[data-fx-row="{hag}"] .fx-chip a')
+    check(chip.count() == 1 and chip.get_attribute("href").endswith("dnd-rules/#prone"), "a condition chip links to the Rules Reference")
+
+    # the party joins the fight with a typed initiative
+    page.evaluate("DndChar.save({name: 'Test Fighter', ed: '2024', classes: [{cls: 'fighter', lvl: 5}], ab: [16, 14, 14, 10, 12, 8]}, 'dnd-monsters')")
+    page.locator('[data-fx="party"]').click()
+    page.locator("#fxPartyList [data-pc-init]").first.fill("17")
+    page.locator('[data-fx="padd"]').click()
+    order = fx_names(page)
+    check(order[:2] == ["Bog Hag", "Test Fighter character"] and page.locator("#fxList .fx.pc").count() == 1, f"Add the party puts a character in turn order ({order})")
+    page.locator('[data-fx="end"]').click()
+    check(page.evaluate("localStorage.getItem('dnd.encounter.fight')") is None and page.locator("#fxStart").count() == 1, "End fight clears the tracker")
+    page.evaluate("document.querySelector('#cuSec').open = true")
+    page.locator("#cuList [data-cu-del]").click()
+    check(page.locator("#cuList li").count() == 0 and page.locator("#encList li").count() == 1, "deleting a custom creature also takes it out of the encounter")
+    page.evaluate("['dnd.encounter', 'dnd.encounter.fight', 'mon.custom', 'dnd.characters'].forEach(k => localStorage.removeItem(k))")
 
     # dice and links (STYLE 6k): spell names in italics, rollable attacks, the type filters the list, the dice tray
     load(page, base + "?ed=2014&m=archmage")
